@@ -26,8 +26,8 @@ int main() {
     str = "Math";
     str.push_back('e');
     cout<<"String after push: "<<str<<endl;
-    str.pop_back(); //works with -std=c++11
-    cout<<"String after pop: "<<str<<endl;
+    //str.pop_back(); //works with -std=c++11
+    //cout<<"String after pop: "<<str<<endl;
     string str2 = "physics";
     str.swap(str2);
     cout<<"String1: "<<str<<"; String2:" <<str2<<endl;
@@ -39,4 +39,11 @@ int main() {
     str.copy(new_str2,5,7); //str.copy(ch,len,pos)
     new_str2[12]='\0';
     cout << "Part String copied in char array: "<<new_str2<<endl;
+    cout << str.find("ha") << endl;
+    cout << str.find('s') << endl;
+    cout << str.rfind('s') << endl;
+    cout << str.find_first_of('a') << endl;
+    cout << str.find_last_of('a') << endl;
+    cout << str.substr(3,3) << endl;
+    cout << str2.compare(str) << endl;
 }

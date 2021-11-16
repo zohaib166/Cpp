@@ -8,8 +8,6 @@ public:
     complex();
     friend complex operator+(complex,complex);
     void display();
-    friend ostream& operator<<(ostream&, complex&);
-    friend istream& operator>>(istream&, complex&);
 };
 complex::complex() {}
 complex::complex(double r, double i) {
@@ -27,9 +25,7 @@ void complex::display() {
 }
 int main() {
     complex c1(3.4,5.6), c2(1.3, 7.3);
-    complex a1,a2,a3;
+    complex a3;
     a3 = c1 + c2;
     a3.display();
-    operator<<(cout,a3);
-    cout << a3;
 }

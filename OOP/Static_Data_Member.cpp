@@ -10,7 +10,7 @@ public:
 int items::count;
 void items::setNumber(int x) {
     number=x;
-    count++;
+    items::count++;
 }
 void items::getCount() {
     cout << "The count is: "<< count << endl;

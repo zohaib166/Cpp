@@ -17,7 +17,7 @@ public:
 int main() {
     Base b;
     Derived *d;
-    d = &b;
-    d->func1(); //correct
-    d->func2(); //not allowed
+    d = &b; //error
+    d->func1(); 
+    d->func2();
 }

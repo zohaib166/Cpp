@@ -1,24 +1,20 @@
 #include <iostream>
 using namespace std;
-class Base {
+
+class Demo {
 public:
-    Base() {
-        cout<<"Base Constructor called"<<endl;
+    static int objCount;
+    Demo() {
+        objCount++;
+        cout<<"Object no: "<<objCount<< " created"<<endl;
     }
-    ~Base() {
-        cout<<"Base Destructor called"<<endl;
+    ~Demo() {
+        cout<<"Object no: "<<objCount<< " Destroyed"<<endl;
+        objCount--;
     }
 };
-class Derived: public Base {
-public:
-    Derived() {
-        cout<<"Derived Constructor called"<<endl;
-    }
-    ~Derived() {
-        cout<<"Derived Destructor called"<<endl;
-    }
-};
+int Demo::objCount;
 
 int main() {
-    Derived d;
+    Demo d[3];
 }

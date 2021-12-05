@@ -23,7 +23,7 @@ int Student::input() {
     s.id = sid;
     s.branch = dept;
     s.name = sname;
-    //writing student object to file
+    cout<<"Writing Object 1 to file"<<endl;
     file_obj.write((char*)&s, sizeof(s));
     sid = 2;
     sname = "Chandan Garg";
@@ -31,6 +31,7 @@ int Student::input() {
     s.id = sid;
     s.branch = dept;
     s.name = sname;
+    cout<<"Writing Object 2 to file"<<endl;
     file_obj.write((char*)&s, sizeof(s));
     file_obj.close();
 }
@@ -40,6 +41,7 @@ int Student::output() {
     file_obj.open("student.txt", ios::in);
     Student s;
     int i; string n; string b;
+    cout<<"Reading objects from file"<<endl;
     file_obj.read((char*)&s, sizeof(s));
     while (!file_obj.eof()) {
         i = s.id;

@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-template <typename T>
+template <class T>
 void myswap(T &a, T &b) {
     T temp;
     temp = a;

@@ -6,13 +6,15 @@ int main()
 {
     ifstream infile;
     infile.open("data.txt");
-    if(infile.is_open()) {
+    while(infile.is_open()) {
         string str1,str2;
         getline(infile,str1);
-        getline(infile,str2);
-        cout<<str1<<"\n"<<str2;
-        infile.close();
-    } else {
-        cout<<"File could not be opened";
+        //getline(infile,str2);
+        cout<<str1<<"\n";
+        if(infile.eof()) {
+            cout<<"File ended\n";
+            infile.close();
+            break;
+        }
     }
 }

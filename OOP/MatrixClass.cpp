@@ -65,6 +65,7 @@ Matrix operator*(Matrix &a, Matrix &b) {
     return c;
 }
 void Matrix::showMatrix() {
+    cout<<"Matrix:"<<endl;
     for(int i=0;i<_rows;i++) {
         for(int j=0;j<_cols;j++) {
             cout<<num[i][j]<<" ";
@@ -76,7 +77,9 @@ int main()
 {
     Matrix x1(3,3),x2(3,3),x3(3,3);
     x1.fillMatrix();
+    x3.showMatrix();
     x2.fillMatrix();
+    x3.showMatrix();
     x3 = x1*x2;
     x3.showMatrix();
 }

@@ -77,9 +77,9 @@ int main()
 {
     Matrix x1(3,3),x2(3,3),x3(3,3);
     x1.fillMatrix();
-    x3.showMatrix();
+    x1.showMatrix();
     x2.fillMatrix();
-    x3.showMatrix();
-    x3 = x1*x2;
-    x3.showMatrix();
+    x2.showMatrix();
+    //x3 = x1*x2;
+    //x3.showMatrix();
 }

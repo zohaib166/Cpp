@@ -10,6 +10,9 @@ public:
     ~Matrix();
     void fillMatrix();
     void showMatrix();
+    friend Matrix operator*(Matrix &a, Matrix &b);
+    int getRows() { return _rows; }
+    int getCols() { return _cols; }
 };
 Matrix::Matrix() {
     _rows = 2;
@@ -43,6 +46,24 @@ void Matrix::fillMatrix() {
         }
     }
 }
+Matrix operator*(Matrix &a, Matrix &b) {
+    int row = b.getRows();
+    int col = a.getCols();
+    Matrix c(row,col);
+    if(row==col) {
+        for(int i=0;i<row;i++) {
+            for(int j=0;j<col;j++) {
+                for(int k=0;k<col;k++) {
+                    c.num[i][j] = a.num[i][k]*b.num[k][j];
+                }
+            }
+        }
+    } else {
+        cout<<"Row and column does not match"<<endl;
+        c.fillMatrix();
+    }
+    return c;
+}
 void Matrix::showMatrix() {
     for(int i=0;i<_rows;i++) {
         for(int j=0;j<_cols;j++) {
@@ -53,7 +74,9 @@ void Matrix::showMatrix() {
 }
 int main()
 {
-    Matrix x(4,5);
-    x.fillMatrix();
-    x.showMatrix();
+    Matrix x1(3,3),x2(3,3),x3(3,3);
+    x1.fillMatrix();
+    x2.fillMatrix();
+    x3 = x1*x2;
+    x3.showMatrix();
 }

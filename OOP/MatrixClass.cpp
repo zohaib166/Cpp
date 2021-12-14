@@ -53,7 +53,7 @@ void Matrix::showMatrix() {
 }
 int main()
 {
-    Matrix x;
+    Matrix x(4,5);
     x.fillMatrix();
     x.showMatrix();
 }

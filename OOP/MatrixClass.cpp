@@ -2,17 +2,16 @@
 using namespace std;
 
 class Matrix {
-    int **num;
-    int _rows,_cols;
 public:
+int **num;
+    int _rows,_cols;
     Matrix();
     Matrix(const int, const int);
     ~Matrix();
     void fillMatrix();
     void showMatrix();
-    friend Matrix operator*(Matrix &a, Matrix &b);
-    int getRows() { return _rows; }
-    int getCols() { return _cols; }
+    Matrix operator*(Matrix a);
+    void operator=(Matrix a);
 };
 Matrix::Matrix() {
     _rows = 2;
@@ -46,15 +45,16 @@ void Matrix::fillMatrix() {
         }
     }
 }
-Matrix operator*(Matrix &a, Matrix &b) {
-    int row = b.getRows();
-    int col = a.getCols();
-    Matrix c(row,col);
-    if(row==col) {
-        for(int i=0;i<row;i++) {
+Matrix Matrix::operator*(Matrix a) {
+    //int row = b._rows;
+    int col = a._cols;
+    Matrix c(_rows,col);
+    if(_rows==col) {
+        for(int i=0;i<_rows;i++) {
             for(int j=0;j<col;j++) {
+                c.num[i][j]=0;
                 for(int k=0;k<col;k++) {
-                    c.num[i][j] = a.num[i][k]*b.num[k][j];
+                    c.num[i][j] += num[i][k]*a.num[k][j];
                 }
             }
         }
@@ -64,6 +64,13 @@ Matrix operator*(Matrix &a, Matrix &b) {
     }
     return c;
 }
+void Matrix::operator=(Matrix a) {
+    for(int i=0;i<a._rows;i++) {
+        for(int j=0;j<a._cols;j++) {
+            num[i][j] = a.num[i][j];
+        }
+    }
+}
 void Matrix::showMatrix() {
     cout<<"Matrix:"<<endl;
     for(int i=0;i<_rows;i++) {
@@ -72,6 +79,7 @@ void Matrix::showMatrix() {
         }
         cout<<endl;
     }
+    cout<<endl;
 }
 int main()
 {
@@ -80,6 +88,6 @@ int main()
     x1.showMatrix();
     x2.fillMatrix();
     x2.showMatrix();
-    //x3 = x1*x2;
-    //x3.showMatrix();
+    x3 = x1*x2;
+    x3.showMatrix();
 }

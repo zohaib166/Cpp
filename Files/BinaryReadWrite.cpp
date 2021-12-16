@@ -6,17 +6,17 @@ using namespace std;
 
 class Employee {
 public:
-    char name[80];
+    string name;
     int emp_id;
     double gross_pay;
 
     Employee() {
-        strcpy(name,"");
+        name="";
         emp_id = 0;
         gross_pay = 0.0;
     }
-    Employee(char* n, int id, double pay) {
-        strcpy(name,n);
+    Employee(string n, int id, double pay) {
+        name = n;
         emp_id = id;
         gross_pay = pay;
     }

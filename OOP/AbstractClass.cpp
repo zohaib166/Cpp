@@ -4,7 +4,7 @@ class Animal {
 public:
     virtual void makeSound() = 0;
     void eat() {
-        cout << "Munch";
+        cout << "Munchies";
     }
 };
 class Dog:public Animal {

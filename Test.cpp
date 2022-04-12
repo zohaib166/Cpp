@@ -1,9 +1,9 @@
 #include <iostream>
-
 using namespace std;
-
-int main() 
+int main()
 {
-    int i = 8;
-    cout << i << hex << i+i <<oct << i;
+    auto a = 3+4.5-'a';
+    int x = 10;
+    decltype(x) y = 11;
+    cout << a <<" "<< x << " " << y << endl;
 }

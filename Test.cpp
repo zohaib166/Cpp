@@ -4,6 +4,6 @@ using namespace std;
 
 int main() 
 {
-    char x = 256;
-    cout << (int) x;
+    int i = 8;
+    cout << i << hex << i+i <<oct << i;
 }

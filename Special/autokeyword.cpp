@@ -2,6 +2,8 @@
 using namespace std;
 int main()
 {
-    auto x = 3+4.5-'a';
-    cout << x;
+    auto a = 3+4.5-'a';
+    int x = 10;
+    decltype(x) y = 11;
+    cout << x << " " << y << endl;
 }

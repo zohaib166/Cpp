@@ -1,3 +1,6 @@
+/**
+ * Convert roman numbers into decimal
+**/
 #include <iostream>
 #include <map>
 using namespace std;

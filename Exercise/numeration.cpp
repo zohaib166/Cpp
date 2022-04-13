@@ -1,3 +1,6 @@
+/**
+ * Convert number till 99 into words
+ **/
 #include <iostream>
 using namespace std;
 

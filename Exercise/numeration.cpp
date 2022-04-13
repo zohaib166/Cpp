@@ -3,7 +3,7 @@ using namespace std;
 
 string one[] = {"","one ","two ","three ","four ","five ","six ","seven ","eight ","nine ","ten ", "eleven ", "twelve ","thirteen ","fourteen ", "fifteen ", "sixteen ", "seventeen ","eighteen ","nineteen "};
 
-string ten[] = {"","","twenty ","thirty ","forty ","fifty ","sixty ", "seventy ","eighty ","ninety "};
+string ten[] = {"","","twenty ","thirty ","forty ","fifty ", "sixty ", "seventy ","eighty ","ninety "};
 
 string numberToWords(int n, string s) {
     string word = "";

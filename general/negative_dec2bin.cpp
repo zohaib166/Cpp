@@ -1,6 +1,5 @@
 #include <iostream>
 using namespace std;
-
 void twos_complement(char *bitstream) {
     int i = 15;
     while(bitstream[i] == '0' && i>=0) {
@@ -13,7 +12,6 @@ void twos_complement(char *bitstream) {
         i--;
     }
 }
-
 char* dec2bin(int num) {
     char *bitstream = new char[17] ; 
     int orig = num;
@@ -28,9 +26,6 @@ char* dec2bin(int num) {
         twos_complement(bitstream);
     return bitstream;
 }
-
-
-
 int main() {
 
     cout << dec2bin(36) << endl;

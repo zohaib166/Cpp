@@ -12,7 +12,6 @@ vector <char> dec2anybase(int num, int base) {
     return answer;
 }
 
-
 int main()
 {
     vector <char>x = dec2anybase(123, 8);

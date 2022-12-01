@@ -5,9 +5,11 @@ using namespace std;
 vector <char> dec2anybase(int num, int base) {
 
     vector<char>answer;
-    while(num>0) {
-        answer.push_back(num%base + 48);
-        num = num/base;
+    if(base < 10) {
+        while(num>0) {
+            answer.push_back(num%base + 48);
+            num = num/base;
+        }
     }
     return answer;
 }

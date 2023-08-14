@@ -3,7 +3,7 @@ using namespace std;
 
 class Matrix {
 public:
-int **num;
+    int **num;
     int _rows,_cols;
     Matrix();
     Matrix(const int, const int);

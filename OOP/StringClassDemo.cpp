@@ -19,7 +19,7 @@ int main() {
     cout << "String after appending: "<<str<<endl;
     str.insert(4,"der");
     cout<<"String after inserting: "<<str<<endl;
-    str.replace(4,3,"ww");
+    str.replace(4,5,"ww");
     cout<<"String after replacing: "<<str<<endl;
     str.erase();
     cout<<"String after erase: "<<str.length()<<endl;
@@ -31,13 +31,14 @@ int main() {
     string str2 = "physics";
     str.swap(str2);
     cout<<"String1: "<<str<<"; String2:" <<str2<<endl;
-    char new_str[15];
+    
+    char new_str[str.size()];
     str.copy(new_str,sizeof(str)); //str.copy(ch,len)
     cout << "String copied in char array: "<<new_str<<endl;
     char new_str2[15];
     str = "Zohaib Hasan";
     str.copy(new_str2,5,7); //str.copy(ch,len,pos)
-    new_str2[12]='\0';
+    new_str2[6]='\0';
     cout << "Part String copied in char array: "<<new_str2<<endl;
     cout << str.find("ha") << endl;
     cout << str.find('s') << endl;

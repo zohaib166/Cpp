@@ -35,7 +35,6 @@ public:
 int PrintJobs::nTrayPages = 500; //loaded paper initilially
 int PrintJobs::nJobs = 0;   //no jobs to start with
 int main() {
-
     PrintJobs::currentStatus();
     PrintJobs j1(10);
     PrintJobs::currentStatus();
@@ -43,5 +42,4 @@ int main() {
     PrintJobs::currentStatus();
     PrintJobs j2(5), j3(30);
     PrintJobs::currentStatus();
-
 }

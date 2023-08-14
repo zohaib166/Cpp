@@ -2,7 +2,7 @@
 using namespace std;
 void twos_complement(char *bitstream) {
     int i = 15;
-    while(bitstream[i] == '0' && i>=0) {
+    while(bitstream[i] == '0' && i >= 0) {
         i--;
     }
     i--;

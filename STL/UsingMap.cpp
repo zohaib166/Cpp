@@ -14,4 +14,16 @@ int main()
         cout << itr->first
             << '\t' << itr->second << '\n';
     }
+
+    for (auto itr = item.begin(); itr != item.end(); ++itr) {
+        if(itr->first == 2) {
+            item.erase(itr->first);
+        }
+    }
+    cout << "KEY\tELEMENT\n";
+    for (auto itr = item.begin(); itr != item.end(); ++itr) {
+        cout << itr->first
+            << '\t' << itr->second << '\n';
+    }
+
 }

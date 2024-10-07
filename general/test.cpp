@@ -13,16 +13,10 @@ class Base {
 class Derived: Base {
 	
 };
+#include <iostream>
 
-class Derived2: public Derived {
-	public:
-	void display() {
-		cout << "Variables from Derived Class" << endl;
-		cout << x << " " << y << " " << z << endl;
-	}
-};
+using namespace std;
 
 int main() {
-	Derived obj;
-	
+	cout << '\a';
 }

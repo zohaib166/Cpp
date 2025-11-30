@@ -59,20 +59,29 @@ complex complex::operator/(complex c) {
 
 void complex::print() {
     cout << fixed << setprecision(2);
-    if(imag < 0)
-        cout << real << "-" << -1*imag << "i" << endl;
-    else if(imag > 0) {
-        cout << real << "+" << imag << "i" << endl;
-    } else if(imag == 0) {
+    
+    if(imag == 0.00) {
         cout << real << endl;
-    } else if(real == 0) {
+    } else if(real == 0.00) {
         cout << imag << "i" << endl;
-    }
+    } else if(imag < 0.00) {
+        cout << real << "-" << -1*imag << "i" << endl;
+    } else if(imag > 0.00) {
+        cout << real << "+" << imag << "i" << endl;
+    } 
 }
 
 int main() {
-    complex c1(3.4,5.6), c2(1.3, 7.3);
+    complex c1, c2;
+    cin >> c1.real >> c1.imag;
+    cin >> c2.real >> c2.imag;
     complex a1;
+    a1 = c1 + c2;
+    a1.print();
+    a1 = c1 - c2;
+    a1.print();
     a1 = c1 * c2;
+    a1.print();
+    a1 = c1 / c2;
     a1.print();
 }

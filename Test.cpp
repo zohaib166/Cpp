@@ -1,26 +1,40 @@
+
 #include <iostream>
-#include <cstdio>
+
 using namespace std;
 
-int main()
-{
-    int N;
-    cin >> N;
-    int A[N];
-    for(int i=0;i<N;i++) {
-        cin >> A[i];
+class Rectangle {
+    int length, breadth;
+public:
+    void setLength(int l) {
+        if(l<1) {
+            cout << "invalid input, setting default to 1\n";
+            length = 1;
+            return;
+        }
+        length = l;
     }
-    
-    int temp = A[0];
-    for(int i=1; i<N-1;i++) {
-        A[i] = A[i+1];
+    void setBreadth(int b) {
+        if(b<1) {
+            cout << "invalid input,  setting default to 1\n";
+            breadth = 1;
+            return;
+        }
+        breadth = b;
     }
-    
-    A[N-1] = temp;
-    
-    for(int i=0;i<N;i++) {
-        cout << A[i] << " ";
+
+    int area() {
+        return length*breadth;
     }
-    
-    return 0;
+    int perimeter() {
+        return 2*(length+breadth);
+    }
+};
+
+int main() {
+    Rectangle r1;
+    r1.setLength(-1);
+    r1.setBreadth(-1);
+    cout << r1.area() << endl;
+    cout << r1.perimeter() << endl;
 }

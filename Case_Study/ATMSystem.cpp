@@ -135,6 +135,12 @@ public:
     ~ATM();
 };
 
+void ATM::addAccount(Account *acc) {
+    if(acc!=nullptr) {
+        
+    }
+}
+
         
 
 

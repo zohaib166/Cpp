@@ -81,6 +81,62 @@ void SavingsAccount::applyInterest() {
     cout << "Interest Added\n";
 }
 
+void SavingsAccount::displayInfo() {
+    cout << "x------------Account Info-------------x\n";
+    cout << "Account type: Savings\n";
+    cout << "Account Number: " << accountNumber << endl;
+    cout << "Holder Name: " << accountHolder << endl;
+    cout << "Account Balance: " << balance << endl;
+    cout << "Interest Rate: " << interestRate << endl;
+}
+
+class CheckingAccount:Account {
+private:
+    double overdraftLimit;
+public:
+    CheckingAccount(int accountNumber, int pin, double balance, 
+        string accountHolder, double overdraftLimit): Account(accountNumber, pin, balance, accountHolder);
+    void withdraw(double amount);
+    void displayInfo();
+};
+
+CheckingAccount::CheckingAccount(int accountNumber, int pin, double balance, 
+        string accountHolder, double overdraftLimit): Account(accountNumber, pin, balance, accountHolder) 
+        {
+            this->overdraftLimit = overdraftLimit;
+        }
+
+void CheckingAccount::withdraw(double amount) {
+    if(balance-amount > -overdraftLimit) {
+        balance = balance - amount;
+    } else {
+        cout << "Overdraft Limit Exceeded\n";
+    }
+}
+
+void CheckingAccount::displayInfo() {
+    cout << "x------------Account Info-------------x\n";
+    cout << "Account type: Checking\n";
+    cout << "Account Number: " << accountNumber << endl;
+    cout << "Holder Name: " << accountHolder << endl;
+    cout << "Account Balance: " << balance << endl;
+    cout << "OVerdraftLimit: " << overdraftLimit << endl;
+}
+
+class ATM {
+private:
+    vector <Account*> accounts;
+    Account* currentAccount;
+public:
+    void addAccount(Account *acc);
+    bool login(int accNum, int pin);
+    void logout();
+    void processTranasaction();
+    ~ATM();
+};
+
+        
+
 
 
     

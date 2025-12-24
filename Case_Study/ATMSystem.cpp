@@ -15,6 +15,7 @@ public:
     virtual ~Account();
     bool authenticate(int enteredPin);
     double getBalance();
+    int getAccNum();
     void deposit(double amount);
     virtual void withdraw(double amount) = 0;
     virtual void displayInfo() = 0;
@@ -25,6 +26,10 @@ Account::Account(int accountNumber, int pin, double balance, string accountHolde
     this->pin = pin;
     this->balance = balance;
     this->accountHolder = accountHolder;
+}
+
+int Account::getAccNum() {
+    return accountNumber;
 }
 
 Account::~Account() {
@@ -50,7 +55,7 @@ void Account::deposit(double amount) {
 }
 
 //high interest "cannot go below zero" savings account
-class SavingsAccount:Account
+class SavingsAccount:public Account
 {
 private:
     double interestRate;
@@ -90,7 +95,7 @@ void SavingsAccount::displayInfo() {
     cout << "Interest Rate: " << interestRate << endl;
 }
 
-class CheckingAccount:Account {
+class CheckingAccount:public Account {
 private:
     double overdraftLimit;
 public:
@@ -137,8 +142,76 @@ public:
 
 void ATM::addAccount(Account *acc) {
     if(acc!=nullptr) {
-        
+        accounts.push_back(acc);
     }
+}
+
+bool ATM::login(int accNum, int pin) {
+    for(Account *x: accounts) {
+        if(x->getAccNum() == accNum) {
+            if(x->authenticate(pin)) {
+                currentAccount = x;
+                return true;
+            } else {
+                cout << "Incorrect Pin\n";
+            }
+        }
+    }
+    return false;
+}
+
+void ATM::logout() {
+    currentAccount = nullptr;
+}
+
+void ATM::processTranasaction()
+{
+    int choice;
+    if(currentAccount!=nullptr) {
+        cout << "Enter your choice, enter 5 to logout:\n";
+        cout << "1. Check Balance\n";
+        cout << "2. Deposit\n";
+        cout << "3. Withdraw\n";
+        cout << "4. Display Details\n";
+        cout << "5. Logout\n";
+        cin >> choice;
+        while(choice!=5) {
+            if(choice == 1) {
+                currentAccount->getBalance();
+            } else if(choice == 2) {
+                double amount;
+                cout << "Enter the amount to be deposited: ";
+                cin >> amount;
+                currentAccount->deposit(amount);
+            } else if(choice==3) {
+                double amount;
+                cout << "Enter the amount to be withdrawn: ";
+                cin >> amount;
+                currentAccount->withdraw(amount);
+            } else if(choice==4) {
+                currentAccount->displayInfo();
+            } else {
+                cout << "Invalid Choice\n";
+            }
+        }
+    }
+}
+
+ATM::~ATM() {
+    for(Account *x: accounts) {
+        delete x;
+    }
+    accounts.clear();
+}
+
+int main()
+{
+    ATM obj;
+    obj.addAccount(new SavingsAccount(101, 2345, 4523.45, "John Doe", 0.05));
+    obj.addAccount(new CheckingAccount(102, 1234, 8212.15, "Daniel Max", 500.00));
+    obj.addAccount(new SavingsAccount(103, 1212, 10000.00, "Scarlett Pittsburg", 0.05));
+    obj.addAccount(new CheckingAccount(102, 3434, 8212.15, "Arthur Shaw", 1000.00));
+    
 }
 
         

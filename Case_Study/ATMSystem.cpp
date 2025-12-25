@@ -211,7 +211,16 @@ int main()
     obj.addAccount(new CheckingAccount(102, 1234, 8212.15, "Daniel Max", 500.00));
     obj.addAccount(new SavingsAccount(103, 1212, 10000.00, "Scarlett Pittsburg", 0.05));
     obj.addAccount(new CheckingAccount(102, 3434, 8212.15, "Arthur Shaw", 1000.00));
-    
+    int accno, pin;
+    cout << "Welcome to WTF Bank\n";
+    cout << "Enter your account number: ";
+    cin >> accno;
+    cout << "Enter your PIN: ";
+    cin >> pin;
+    bool attempt = obj.login(accno, pin);
+    if(attempt) {
+        obj.processTranasaction();
+    }
 }
 
         

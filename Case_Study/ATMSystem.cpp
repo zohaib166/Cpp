@@ -99,8 +99,7 @@ class CheckingAccount:public Account {
 private:
     double overdraftLimit;
 public:
-    CheckingAccount(int accountNumber, int pin, double balance, 
-        string accountHolder, double overdraftLimit): Account(accountNumber, pin, balance, accountHolder);
+    CheckingAccount(int accountNumber, int pin, double balance, string accountHolder, double overdraftLimit);
     void withdraw(double amount);
     void displayInfo();
 };
@@ -168,16 +167,16 @@ void ATM::processTranasaction()
 {
     int choice;
     if(currentAccount!=nullptr) {
-        cout << "Enter your choice, enter 5 to logout:\n";
-        cout << "1. Check Balance\n";
-        cout << "2. Deposit\n";
-        cout << "3. Withdraw\n";
-        cout << "4. Display Details\n";
-        cout << "5. Logout\n";
-        cin >> choice;
-        while(choice!=5) {
+        do {
+            cout << "1. Check Balance\n";
+            cout << "2. Deposit\n";
+            cout << "3. Withdraw\n";
+            cout << "4. Display Details\n";
+            cout << "5. Logout\n";
+            cout << "Enter your choice, enter 5 to logout:\n";
+            cin >> choice;
             if(choice == 1) {
-                currentAccount->getBalance();
+                cout << "Account Balance: " << currentAccount->getBalance() << endl;
             } else if(choice == 2) {
                 double amount;
                 cout << "Enter the amount to be deposited: ";
@@ -190,10 +189,8 @@ void ATM::processTranasaction()
                 currentAccount->withdraw(amount);
             } else if(choice==4) {
                 currentAccount->displayInfo();
-            } else {
-                cout << "Invalid Choice\n";
             }
-        }
+        } while(choice!=5);
     }
 }
 
@@ -210,7 +207,7 @@ int main()
     obj.addAccount(new SavingsAccount(101, 2345, 4523.45, "John Doe", 0.05));
     obj.addAccount(new CheckingAccount(102, 1234, 8212.15, "Daniel Max", 500.00));
     obj.addAccount(new SavingsAccount(103, 1212, 10000.00, "Scarlett Pittsburg", 0.05));
-    obj.addAccount(new CheckingAccount(102, 3434, 8212.15, "Arthur Shaw", 1000.00));
+    obj.addAccount(new CheckingAccount(104, 3434, 8212.15, "Arthur Shaw", 1000.00));
     int accno, pin;
     cout << "Welcome to WTF Bank\n";
     cout << "Enter your account number: ";
